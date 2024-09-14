@@ -1,0 +1,17 @@
+/.bundle
+/db/*.sqlite3
+/log/*
+!/log/.keep
+/tmp
+.env
+.DS_Store
+/.byebug_history
+/coverage/
+/yarn-error.log
+/public/system
+/public/uploads
+/node_modules/
+.idea/
+Gemfile.lock
+/vendor/bundle
+yarn.lock

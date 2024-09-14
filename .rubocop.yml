@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    -
+Style/StringLiterals:
+  Enabled: false
