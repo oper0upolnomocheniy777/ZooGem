@@ -9,4 +9,6 @@ Gem::Specification.new do |spec|
   spec.description   = 'A library that generates random animals and something other about zoo.'
   spec.files         = Dir['lib/**/*.rb']
   spec.required_ruby_version = '>= 3.3.0'
+
+  spec.add_runtime_dependency 'csv'
 end

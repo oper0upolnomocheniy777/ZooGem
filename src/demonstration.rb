@@ -1,13 +1,12 @@
-# frozen_string_literal: true
-
-# Load necessary modules
+# Пример использования библиотеки
 require_relative '../lib/zoo_generator/animal_generator'
-require 'date'
 
-# Demonstrate methods from AnimalGenerator module
 puts "=== AnimalGenerator ==="
-puts "Random Animal: #{}"
-puts
+puts "Random Animal: #{ZooGenerator::AnimalGenerator.random_animal}"
+puts "Random Predator: #{ZooGenerator::AnimalGenerator.random_predator}"
+puts "Random Herbivore: #{ZooGenerator::AnimalGenerator.random_herbivore}"
 
-# Demonstrate methods from ... module
-puts "=== ...Generator ==="
+puts "\n=== Animal Types ==="
+ZooGenerator::AnimalGenerator.animal_types.each do |type|
+  puts "Random #{type.capitalize}: #{ZooGenerator::AnimalGenerator.random_by_type(type)}"
+end
