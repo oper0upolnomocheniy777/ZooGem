@@ -28,5 +28,15 @@ module ZooGenerator
     def self.animal_types
       ANIMALS.map { |animal| animal['type'] }.uniq
     end
+
+    def self.all_predators
+      predators = ANIMAL_DATA.select { |animal| animal[:diet] == 'carnivore' }
+      predators.map { |predator| "#{predator[:name]} (#{predator[:species]})" }
+    end
+
+    def self.all_herbivores
+      herbivores = ANIMAL_DATA.select { |animal| animal[:diet] == 'herbivore' }
+      herbivores.map { |herbivore| "#{herbivore[:name]} (#{herbivore[:species]})" }
+    end
   end
 end
