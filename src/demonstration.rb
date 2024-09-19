@@ -1,4 +1,4 @@
-require_relative 'lib/zoo_generator/animal_generator'
+require_relative '../lib/zoo_generator/animal_generator'
 
 puts "=== AnimalGenerator ==="
 puts "Random Animal: #{ZooGenerator::AnimalGenerator.random_animal}"
