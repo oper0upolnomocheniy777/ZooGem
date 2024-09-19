@@ -2,7 +2,7 @@ require 'csv'  # Подключаем библиотеку для работы �
 
 module ZooGenerator  # Определяем модуль ZooGenerator
   module AnimalGenerator  # Вложенный модуль AnimalGenerator
-    ANIMALS_FILE = File.expand_path('../data/animals.csv', dir)  # Указываем путь к файлу animals.csv
+    ANIMALS_FILE = File.expand_path('../data/animals.csv', __dir__)  # Указываем путь к файлу animals.csv
     ANIMALS = CSV.read(ANIMALS_FILE, headers: true)  # Читаем CSV-файл и сохраняем данные в массив с заголовками
 
     def self.random_animal  # Метод для получения случайного животного
@@ -22,7 +22,7 @@ module ZooGenerator  # Определяем модуль ZooGenerator
 
     def self.random_by_type(animal_type)  # Метод для получения случайного животного по типу
       animal = ANIMALS.select { |animal| animal['type'].casecmp(animal_type) == 0 }.sample  # Фильтруем по типу и выбираем случайного
-      "#{animal['name']} (#{animal['type']})"  # Возвращаем строку с именем и типом животного
+      "#{animal['name']} (#{animal['type']})" if animal  # Возвращаем строку с именем и типом животного, если найдено
     end
 
     def self.animal_types  # Метод для получения уникальных типов животных
@@ -30,13 +30,13 @@ module ZooGenerator  # Определяем модуль ZooGenerator
     end
 
     def self.all_predators  # Метод для получения всех хищников
-      predators = ANIMAL_DATA.select { |animal| animal[:diet] == 'carnivore' }  # Фильтруем по диете "мясоед"
-      predators.map { |predator| "#{predator[:name]} (#{predator[:species]})" }  # Возвращаем массив строк с именами и видами хищников
+      predators = ANIMALS.select { |animal| animal['class'] == 'predator' }  # Фильтруем по классу "хищник"
+      predators.map { |predator| "#{predator['name']} (#{predator['type']})" }  # Возвращаем массив строк с именами и видами хищников
     end
 
     def self.all_herbivores  # Метод для получения всех травоядных
-      herbivores = ANIMAL_DATA.select { |animal| animal[:diet] == 'herbivore' }  # Фильтруем по диете "травоядный"
-      herbivores.map { |herbivore| "#{herbivore[:name]} (#{herbivore[:species]})" }  # Возвращаем массив строк с именами и видами травоядных
+      herbivores = ANIMALS.select { |animal| animal['class'] == 'herbivore' }  # Фильтруем по классу "травоядный"
+      herbivores.map { |herbivore| "#{herbivore['name']} (#{herbivore['type']})" }  # Возвращаем массив строк с именами и видами травоядных
     end
   end
 end
